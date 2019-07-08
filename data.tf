@@ -28,7 +28,7 @@ data "aws_iam_policy_document" "writer-policy" {
     actions = ["dynamodb:PutItem"]
 
     resources = [
-      "arn:${data.aws_partition.current.partition}:dynamodb:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:table/${var.db_table_name}",
+      "arn:${data.aws_partition.current.partition}:dynamodb:*:${data.aws_caller_identity.current.account_id}:table/${var.db_table_name}",
     ]
   }
 }
@@ -45,7 +45,7 @@ data "aws_iam_policy_document" "reader-policy" {
     ]
 
     resources = [
-      "arn:${data.aws_partition.current.partition}:dynamodb:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:table/${var.db_table_name}",
+      "arn:${data.aws_partition.current.partition}:dynamodb:*:${data.aws_caller_identity.current.account_id}:table/${var.db_table_name}",
     ]
   }
 }
